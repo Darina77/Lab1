@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:controls="clr-namespace:Lab1.Tools.Controls"
              mc:Ignorable="d" 
-             Height="400" MinHeight="420" MaxHeight="420" MinWidth="200" Width="300" MaxWidth="500"
+             Height="200" MinHeight="220" MaxHeight="220" MinWidth="200" Width="300" MaxWidth="400"
              x:ClassModifier="internal">
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>

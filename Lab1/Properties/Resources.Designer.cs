@@ -59,5 +59,86 @@ namespace Lab1.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Email address {0} is not valid!.
+        /// </summary>
+        internal static string SignIn_FailedToGetUser {
+            get {
+                return ResourceManager.GetString("SignIn_FailedToGetUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Failed to validate password.{0}Reason: {1}.
+        /// </summary>
+        internal static string SignIn_FailedToValidatePassword {
+            get {
+                return ResourceManager.GetString("SignIn_FailedToValidatePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на User with login {0} doesn&apos;t exist!.
+        /// </summary>
+        internal static string SignIn_UserDoesntExist {
+            get {
+                return ResourceManager.GetString("SignIn_UserDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Wrong password!.
+        /// </summary>
+        internal static string SignIn_WrongPassword {
+            get {
+                return ResourceManager.GetString("SignIn_WrongPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Email address {0} is not valid!.
+        /// </summary>
+        internal static string SignUp_EmailIsNotValid {
+            get {
+                return ResourceManager.GetString("SignUp_EmailIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Failed to create user.{0}Reason: {1}.
+        /// </summary>
+        internal static string SignUp_FailedToCreateUser {
+            get {
+                return ResourceManager.GetString("SignUp_FailedToCreateUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Failed to validate data.{0}Reason: {1}.
+        /// </summary>
+        internal static string SignUp_FailedToValidateData {
+            get {
+                return ResourceManager.GetString("SignUp_FailedToValidateData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на User with login {0} already exists!.
+        /// </summary>
+        internal static string SignUp_UserAlreadyExists {
+            get {
+                return ResourceManager.GetString("SignUp_UserAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на User {0} successfully created!.
+        /// </summary>
+        internal static string SignUp_UserSuccessfulyCreated {
+            get {
+                return ResourceManager.GetString("SignUp_UserSuccessfulyCreated", resourceCulture);
+            }
+        }
     }
 }

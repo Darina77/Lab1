@@ -13,7 +13,8 @@ namespace Lab1.Models
         private string _foulderPath;
         private int _filesCount;
         private int _fouldersCount;
-        private int _fullVolume;
+        private long _fullVolume;
+        private 
         #endregion
 
         #region Properties

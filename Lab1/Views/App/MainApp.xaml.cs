@@ -1,27 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using Lab1.ViewModels.App;
 
 namespace Lab1.Views.App
 {
     /// <summary>
     /// Логика взаимодействия для MainApp.xaml
     /// </summary>
-    public partial class MainApp : Window
+    internal partial class MainApp
     {
+        #region Constructor
         public MainApp()
         {
             InitializeComponent();
+            var mainViewView = new MainViewViewModel();
+            DataContext = mainViewView;
         }
+        #endregion
     }
 }
