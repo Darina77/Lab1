@@ -23,6 +23,9 @@ namespace Lab1.Managers
             Users.Add(user);
         }
 
-
+        public static void InitUser()
+        {
+            Users.Add(new User("Name", "Last", "email@m.m", "login", "pass"));
+        }
     }
 }

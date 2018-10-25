@@ -85,6 +85,7 @@ namespace Lab1.ViewModels.Authentication
         private void SignInExecute(object obj)
         {
             User currentUser;
+            DBManager.InitUser();
             try
             {
                 currentUser = DBManager.GetUserByLogin(_login);

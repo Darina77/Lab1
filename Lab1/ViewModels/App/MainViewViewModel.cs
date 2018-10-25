@@ -16,7 +16,6 @@ namespace Lab1.ViewModels.App
     internal class MainViewViewModel : INotifyPropertyChanged
     {
         #region Fields
-        private  Request _currentRequest;
         private string _volumePath;
         private int _filesCount;
         private int _folderCount;
@@ -120,7 +119,7 @@ namespace Lab1.ViewModels.App
             {
                 CountInfo(VolumePath);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MessageBox.Show("Something goes wrong.");
             }
