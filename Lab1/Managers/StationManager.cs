@@ -15,7 +15,7 @@ namespace Lab1.Managers
 
         internal static void CloseApp()
         {
-            MessageBox.Show("ShutDown");
+            MessageBox.Show("Close");
             Environment.Exit(1);
         }
     }

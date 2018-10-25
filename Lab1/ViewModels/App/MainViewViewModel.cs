@@ -6,6 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
+using Lab1.Managers;
+using Lab1.Models;
 using Lab1.Properties;
 using Lab1.Tools;
 
@@ -86,7 +88,7 @@ namespace Lab1.ViewModels.App
         #endregion
         #endregion
 
-        #region ConstructorAndInit
+        #region Constructor
         internal MainViewViewModel()
         {
         }
@@ -103,6 +105,7 @@ namespace Lab1.ViewModels.App
             VolumePath = folderBrowserDialog.SelectedPath;
 
             CountInfo(VolumePath);
+            Request req = new Request(VolumePath, FilesCount, FoldersCount, VolumeRes, StationManager.CurrentUser);
         }
 
         private void CountInfo(string path)
@@ -130,6 +133,7 @@ namespace Lab1.ViewModels.App
 
         private void OpenHistoryExecute(object obj)
         {
+            NavigationManager.Instance.Navigate(ModesEnum.History);
         }
 
         #region EventsAndHandlers

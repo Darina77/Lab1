@@ -41,7 +41,7 @@ namespace Lab1.ViewModels
                     _contentWindow.ContentControl.Content = _mainView ?? (_mainView = new MainApp());
                     break;
                 case ModesEnum.History:
-                    _contentWindow.ContentControl.Content = _historyView ?? (_historyView = new History() );
+                    _contentWindow.ContentControl.Content = _historyView = new History();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, null);

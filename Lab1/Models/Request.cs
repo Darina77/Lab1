@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab1.Models
 {
@@ -14,7 +10,6 @@ namespace Lab1.Models
         private int _filesCount;
         private int _fouldersCount;
         private long _fullVolume;
-        private 
         #endregion
 
         #region Properties
@@ -23,17 +18,22 @@ namespace Lab1.Models
             get { return _guid; }
             private set { _guid = value; }
         }
+        public string FoulderPath
+        {
+            get { return _foulderPath; }
+            private set { _foulderPath = value; }
+        }
         public int FilesCount
         {
             get { return _filesCount; }
-            set { _filesCount = value; }
+            private set { _filesCount = value; }
         }
         public int FoulderCount
         {
             get { return _fouldersCount; }
             private set { _fouldersCount = value; }
         }
-        public int FullVolume
+        public long FullVolume
         {
             get { return _fullVolume; }
             private set { _fullVolume = value; }
@@ -41,10 +41,11 @@ namespace Lab1.Models
         #endregion
 
         #region Constructor
-        public Request(string foulderPath, int filesCount, int fouldersCount, int fullVolume, User user) : this()
+        public Request(string foulderPath, int filesCount, int fouldersCount, long fullVolume, User user) : this()
         {
             _guid = Guid.NewGuid();
             _foulderPath = foulderPath;
+            _filesCount = filesCount;
             _fouldersCount = fouldersCount;
             _fullVolume = fullVolume;
             user.Requests.Add(this);

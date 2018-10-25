@@ -11,17 +11,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Lab1.ViewModels.App;
 
 namespace Lab1.Views.App
 {
     /// <summary>
     /// Логика взаимодействия для History.xaml
     /// </summary>
-    public partial class History : Window
+    public partial class History
     {
         public History()
         {
             InitializeComponent();
+            var history = new HistoryViewModel();
+            DataContext = history;
         }
     }
 }
