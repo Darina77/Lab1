@@ -18,13 +18,14 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
-                        <TextBlock FontSize="12" Text="{Binding Path=FoulderPath, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock FontSize="12" Text="{Binding Path=FolderPath, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
                         <TextBlock FontSize="9" Text="Файлів" />
                         <TextBlock FontSize="8" Text="{Binding Path=FilesCount, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
                         <TextBlock FontSize="9" Text="Папок" />
-                        <TextBlock FontSize="8" Text="{Binding Path=FoulderCount, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock FontSize="8" Text="{Binding Path=FolderCount, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
                         <TextBlock FontSize="9" Text="Загальний об'єм" />
                         <TextBlock FontSize="8" Text="{Binding Path=FullVolume, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock FontSize="8" Text="{Binding Path=CurrentExtension, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

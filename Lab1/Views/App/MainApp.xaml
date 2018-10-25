@@ -29,6 +29,7 @@
         <Label Grid.Row="4" Name="FilesCountRes" Content="{Binding FilesCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="150"/>
         <Label Grid.Row="6" Name="FouldersCountRes" Content="{Binding FoldersCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="150"/>
         <Label Grid.Row="8" Name="VolumeRes" Content="{Binding VolumeRes, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="150"/>
+        <Label Grid.Row="7" Name="CurrentExtension" Content="{Binding CurrentExtension, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="150" Margin="150,28,0,0" Grid.RowSpan="2"/>
 
         <Button Grid.Row="0" Content="..." HorizontalAlignment="Center" FontSize="16px" VerticalAlignment="Top" Width="72" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="24" Command="{Binding OpenFolderCommand}"/>
         <Button Grid.Row="1" Content="Історія" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="72" FontSize="16px" Height="29" Command="{Binding OpenHistoryCommand}"/>

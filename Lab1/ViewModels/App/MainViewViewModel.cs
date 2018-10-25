@@ -16,10 +16,12 @@ namespace Lab1.ViewModels.App
     internal class MainViewViewModel : INotifyPropertyChanged
     {
         #region Fields
+        private  Request _currentRequest;
         private string _volumePath;
         private int _filesCount;
         private int _folderCount;
         private long _volumeRes;
+        private Request.Extension _extension;
 
         #region Commands
         private ICommand _openFolderCommand;
@@ -67,6 +69,16 @@ namespace Lab1.ViewModels.App
                 OnPropertyChanged();
             }
         }
+
+        public Request.Extension CurrentExtension
+        {
+            get { return _extension; }
+            set
+            {
+                _extension = value;
+                OnPropertyChanged();
+            }
+        }
         #region Commands
 
         public ICommand OpenFolderCommand
@@ -95,17 +107,25 @@ namespace Lab1.ViewModels.App
         #endregion
 
         private void OpenFolderExecute(object obj)
-        {
+        { 
             FilesCount = 0;
             FoldersCount = 0;
             VolumeRes = 0;
+            CurrentExtension = Request.Extension.b;
 
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
             folderBrowserDialog.ShowDialog();
             VolumePath = folderBrowserDialog.SelectedPath;
-
-            CountInfo(VolumePath);
-            Request req = new Request(VolumePath, FilesCount, FoldersCount, VolumeRes, StationManager.CurrentUser);
+            try
+            {
+                CountInfo(VolumePath);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something goes wrong.");
+            }
+            Request req = new Request(VolumePath, FilesCount, FoldersCount, VolumeRes, CurrentExtension);
+            StationManager.CurrentUser.Requests.Add(req);
         }
 
         private void CountInfo(string path)
@@ -127,7 +147,24 @@ namespace Lab1.ViewModels.App
                 index => {
                     CountInfo(directories[index]);
                 });
+            if (VolumeRes > 1024 && CurrentExtension != Request.Extension.gb)
+            {
+                VolumeRes /= 1024;
+                CurrentExtension++;
+            }
 
+            switch (CurrentExtension)
+            {
+                case Request.Extension.kb:
+                    currentVolume /= 1024;
+                    break;
+                case Request.Extension.mb:
+                    currentVolume /= (1024*1024);
+                    break;
+                case Request.Extension.gb:
+                    currentVolume /= (1024*1024*1024);
+                    break;
+            }
             VolumeRes += currentVolume;
         }
 

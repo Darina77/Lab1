@@ -4,12 +4,18 @@ namespace Lab1.Models
 {
     public class Request
     {
+        public enum Extension
+        {
+            b, kb, mb, gb
+        }
+
         #region Fields
         private Guid _guid;
-        private string _foulderPath;
+        private string _folderPath;
         private int _filesCount;
-        private int _fouldersCount;
+        private int _foldersCount;
         private long _fullVolume;
+        private Extension _extension;
         #endregion
 
         #region Properties
@@ -18,37 +24,42 @@ namespace Lab1.Models
             get { return _guid; }
             private set { _guid = value; }
         }
-        public string FoulderPath
+        public string FolderPath
         {
-            get { return _foulderPath; }
-            private set { _foulderPath = value; }
+            get { return _folderPath; }
+            private set { _folderPath = value; }
         }
         public int FilesCount
         {
             get { return _filesCount; }
             private set { _filesCount = value; }
         }
-        public int FoulderCount
+        public int FolderCount
         {
-            get { return _fouldersCount; }
-            private set { _fouldersCount = value; }
+            get { return _foldersCount; }
+            private set { _foldersCount = value; }
         }
         public long FullVolume
         {
             get { return _fullVolume; }
             private set { _fullVolume = value; }
         }
+        public Extension CurrentExtension
+        {
+            get { return _extension; }
+            set { _extension = value; }
+        }
         #endregion
 
         #region Constructor
-        public Request(string foulderPath, int filesCount, int fouldersCount, long fullVolume, User user) : this()
+        public Request(string folderPath, int filesCount, int foldersCount, long fullVolume, Extension extension) : this()
         {
             _guid = Guid.NewGuid();
-            _foulderPath = foulderPath;
+            _folderPath = folderPath;
             _filesCount = filesCount;
-            _fouldersCount = fouldersCount;
+            _foldersCount = foldersCount;
             _fullVolume = fullVolume;
-            user.Requests.Add(this);
+            _extension = extension;
         }
         private Request()
         {
@@ -56,7 +67,7 @@ namespace Lab1.Models
         #endregion
         public override string ToString()
         {
-            return _foulderPath + " Файлів: " + _filesCount + " Папок: " + _fouldersCount + " Заагальний об'єм: " + _fullVolume;
+            return _folderPath + " Файлів: " + _filesCount + " Папок: " + _foldersCount + " Заагальний об'єм: " + _fullVolume;
         }
     }
 }
