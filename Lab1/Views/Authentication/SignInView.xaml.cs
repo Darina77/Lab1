@@ -2,9 +2,6 @@
 
 namespace Lab1.Views.Authentication
 {
-    /// <summary>
-    /// Логика взаимодействия для SignInView.xaml
-    /// </summary>
     internal partial class SignInView
     {
         #region Constructor

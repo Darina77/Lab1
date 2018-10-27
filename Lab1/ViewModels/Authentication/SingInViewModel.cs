@@ -26,7 +26,7 @@ namespace Lab1.ViewModels.Authentication
         #region Properties
         public string Password
         {
-            get { return _password; }
+            get => _password;
             set
             {
                 _password = value;
@@ -35,7 +35,7 @@ namespace Lab1.ViewModels.Authentication
         }
         public string Login
         {
-            get { return _login; }
+            get => _login;
             set
             {
                 _login = value;
@@ -44,29 +44,11 @@ namespace Lab1.ViewModels.Authentication
         }
         #region Commands
 
-        public ICommand CloseCommand
-        {
-            get
-            {
-                return _closeCommand ?? (_closeCommand = new RelayCommand<object>(CloseExecute));
-            }
-        }
+        public ICommand CloseCommand => _closeCommand ?? (_closeCommand = new RelayCommand<object>(CloseExecute));
 
-        public ICommand SignInCommand
-        {
-            get
-            {
-                return _signInCommand ?? (_signInCommand = new RelayCommand<object>(SignInExecute, SignInCanExecute));
-            }
-        }
+        public ICommand SignInCommand => _signInCommand ?? (_signInCommand = new RelayCommand<object>(SignInExecute, SignInCanExecute));
 
-        public ICommand SignUpCommand
-        {
-            get
-            {
-                return _signUpCommand ?? (_signUpCommand = new RelayCommand<object>(SignUpExecute));
-            }
-        }
+        public ICommand SignUpCommand => _signUpCommand ?? (_signUpCommand = new RelayCommand<object>(SignUpExecute));
 
         #endregion
         #endregion
@@ -85,20 +67,20 @@ namespace Lab1.ViewModels.Authentication
         private void SignInExecute(object obj)
         {
             User currentUser;
-            DBManager.InitUser();
+            DbManager.InitUser();
             try
             {
-                currentUser = DBManager.GetUserByLogin(_login);
+                currentUser = DbManager.GetUserByLogin(_login);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format(Resources.SignIn_FailedToGetUser, Environment.NewLine,
+                MessageBox.Show(string.Format(Resources.SignIn_FailedToGetUser, Environment.NewLine,
                     ex.Message));
                 return;
             }
             if (currentUser == null)
             {
-                MessageBox.Show(String.Format(Resources.SignIn_UserDoesntExist, _login));
+                MessageBox.Show(string.Format(Resources.SignIn_UserDoesntExist, _login));
                 return;
             }
             try
@@ -111,7 +93,7 @@ namespace Lab1.ViewModels.Authentication
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format(Resources.SignIn_FailedToValidatePassword, Environment.NewLine,
+                MessageBox.Show(string.Format(Resources.SignIn_FailedToValidatePassword, Environment.NewLine,
                     ex.Message));
                 return;
             }
@@ -121,10 +103,10 @@ namespace Lab1.ViewModels.Authentication
 
         private bool SignInCanExecute(object obj)
         {
-            return !String.IsNullOrWhiteSpace(_login) && !String.IsNullOrWhiteSpace(_password);
+            return !string.IsNullOrWhiteSpace(_login) && !string.IsNullOrWhiteSpace(_password);
         }
 
-        private void CloseExecute(object obj)
+        private static void CloseExecute(object obj)
         {
             StationManager.CloseApp();
         }

@@ -1,10 +1,8 @@
-﻿using Lab1.Tools;
-using Lab1.Views.App;
+﻿using Lab1.Views.App;
 using Lab1.Views.Authentication;
 using System;
 
-
-namespace Lab1.ViewModels
+namespace Lab1.Tools
 {
     internal enum ModesEnum
     {
@@ -20,7 +18,6 @@ namespace Lab1.ViewModels
         private SignInView _signInView;
         private SignUpView _signUpView;
         private MainApp _mainView;
-        private History _historyView;
 
         internal NavigationModel(IContentWindow contentWindow)
         {
@@ -41,12 +38,11 @@ namespace Lab1.ViewModels
                     _contentWindow.ContentControl.Content = _mainView ?? (_mainView = new MainApp());
                     break;
                 case ModesEnum.History:
-                    _contentWindow.ContentControl.Content = _historyView = new History();
+                    _contentWindow.ContentControl.Content = new History();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
             }
         }
-
     }
 }

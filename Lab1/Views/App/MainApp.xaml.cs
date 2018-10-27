@@ -2,9 +2,6 @@
 
 namespace Lab1.Views.App
 {
-    /// <summary>
-    /// Логика взаимодействия для MainApp.xaml
-    /// </summary>
     internal partial class MainApp
     {
         #region Constructor

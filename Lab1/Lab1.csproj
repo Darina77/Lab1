@@ -76,7 +76,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Managers\DBManager.cs" />
+    <Compile Include="Managers\DbManager.cs" />
     <Compile Include="Managers\NavigationManager.cs" />
     <Compile Include="Managers\StationManager.cs" />
     <Compile Include="Models\Request.cs" />

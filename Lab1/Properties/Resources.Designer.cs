@@ -61,6 +61,33 @@ namespace Lab1.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Cansel.
+        /// </summary>
+        internal static string Cansel {
+            get {
+                return ResourceManager.GetString("Cansel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на You don&apos;t have access to this foulder {0}.
+        /// </summary>
+        internal static string Dont_have_access {
+            get {
+                return ResourceManager.GetString("Dont_have_access", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Something goes wrong..
+        /// </summary>
+        internal static string Read_foulders_error {
+            get {
+                return ResourceManager.GetString("Read_foulders_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Email address {0} is not valid!.
         /// </summary>
         internal static string SignIn_FailedToGetUser {

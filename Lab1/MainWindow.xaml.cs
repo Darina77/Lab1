@@ -5,9 +5,6 @@ using System.Windows.Controls;
 
 namespace Lab1
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : IContentWindow
     {
         public MainWindow()
@@ -18,9 +15,6 @@ namespace Lab1
             navigationModel.Navigate(ModesEnum.SignIn);
         }
 
-        public ContentControl ContentControl
-        {
-            get { return _contentControl; }
-        }
+        public ContentControl ContentControl => _contentControl;
     }
 }

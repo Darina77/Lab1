@@ -12,7 +12,6 @@ namespace Lab1.ViewModels.App
     internal class HistoryViewModel : INotifyPropertyChanged
     {
         #region Fields
-        private ObservableCollection<Request> _requests;
 
         #region Commands
         private ICommand _openMainViewCommand;
@@ -21,30 +20,15 @@ namespace Lab1.ViewModels.App
         #endregion
 
         #region Properties
-        public ObservableCollection<Request> Requests
-        {
-            get { return _requests; }
-        }
+        public ObservableCollection<Request> Requests { get; private set; }
 
         #endregion
 
         #region Commands
 
-        public ICommand MainViewCommand
-        {
-            get
-            {
-                return _openMainViewCommand ?? (_openMainViewCommand = new RelayCommand<object>(OpenMainViewExecute));
-            }
-        }
+        public ICommand MainViewCommand => _openMainViewCommand ?? (_openMainViewCommand = new RelayCommand<object>(OpenMainViewExecute));
 
-        public ICommand CancelCommand
-        {
-            get
-            {
-                return _cancelCommand ?? (_cancelCommand = new RelayCommand<object>(CencelCommandExecute));
-            }
-        }
+        public ICommand CancelCommand => _cancelCommand ?? (_cancelCommand = new RelayCommand<object>(CancelCommandExecute));
 
         #endregion
 
@@ -57,19 +41,19 @@ namespace Lab1.ViewModels.App
 
         private void FillRequests()
         {
-            _requests = new ObservableCollection<Request>();
+            Requests = new ObservableCollection<Request>();
             foreach (var request in StationManager.CurrentUser.Requests)
             {
-                _requests.Add(request);
+                Requests.Add(request);
             }
         }
 
-        private void OpenMainViewExecute(object obj)
+        private static void OpenMainViewExecute(object obj)
         {
             NavigationManager.Instance.Navigate(ModesEnum.Main);
         }
 
-        private void CencelCommandExecute(object obj)
+        private static void CancelCommandExecute(object obj)
         {
             
             StationManager.CloseApp();

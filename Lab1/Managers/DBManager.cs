@@ -4,7 +4,7 @@ using Lab1.Models;
 
 namespace Lab1.Managers
 {
-    public class DBManager
+    public class DbManager
     {
         private static readonly List<User> Users = new List<User>();
 

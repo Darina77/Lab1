@@ -2,7 +2,7 @@
 
 namespace Lab1.Tools
 {
-    interface IContentWindow
+    internal interface IContentWindow
     {
         ContentControl ContentControl { get; }
     }

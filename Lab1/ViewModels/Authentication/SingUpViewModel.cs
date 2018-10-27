@@ -29,33 +29,17 @@ namespace Lab1.ViewModels.Authentication
         #region Properties
         #region Command
 
-        public ICommand CloseCommand
-        {
-            get
-            {
-                return _closeCommand ?? (_closeCommand = new RelayCommand<object>(CloseExecute));
-            }
-        }
+        public ICommand CloseCommand => _closeCommand ?? (_closeCommand = new RelayCommand<object>(CloseExecute));
 
-        public ICommand SignUpCommand
-        {
-            get
-            {
-                return _signUpCommand ?? (_signUpCommand = new RelayCommand<object>(SignUpExecute, SignUpCanExecute));
-            }
-        }
-        public ICommand SignInCommand
-        {
-            get
-            {
-                return _signInCommand ?? (_signInCommand = new RelayCommand<object>(SignInExecute));
-            }
-        }
+        public ICommand SignUpCommand => _signUpCommand ?? (_signUpCommand = new RelayCommand<object>(SignUpExecute, SignUpCanExecute));
+
+        public ICommand SignInCommand => _signInCommand ?? (_signInCommand = new RelayCommand<object>(SignInExecute));
+
         #endregion
 
         public string Password
         {
-            get { return _password; }
+            get => _password;
             set
             {
                 _password = value;
@@ -65,7 +49,7 @@ namespace Lab1.ViewModels.Authentication
 
         public string Login
         {
-            get { return _login; }
+            get => _login;
             set
             {
                 _login = value;
@@ -75,7 +59,7 @@ namespace Lab1.ViewModels.Authentication
 
         public string FirstName
         {
-            get { return _firstName; }
+            get => _firstName;
             set
             {
                 _firstName = value;
@@ -85,7 +69,7 @@ namespace Lab1.ViewModels.Authentication
 
         public string LastName
         {
-            get { return _lastName; }
+            get => _lastName;
             set
             {
                 _lastName = value;
@@ -95,7 +79,7 @@ namespace Lab1.ViewModels.Authentication
 
         public string Email
         {
-            get { return _email; }
+            get => _email;
             set
             {
                 _email = value;
@@ -116,49 +100,49 @@ namespace Lab1.ViewModels.Authentication
             {
                 if (!new EmailAddressAttribute().IsValid(_email))
                 {
-                    MessageBox.Show(String.Format(Resources.SignUp_EmailIsNotValid, _email));
+                    MessageBox.Show(string.Format(Resources.SignUp_EmailIsNotValid, _email));
                     return;
                 }
-                if (DBManager.UserExists(_login))
+                if (DbManager.UserExists(_login))
                 {
-                    MessageBox.Show(String.Format(Resources.SignUp_UserAlreadyExists, _login));
+                    MessageBox.Show(string.Format(Resources.SignUp_UserAlreadyExists, _login));
                     return;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format(Resources.SignUp_FailedToValidateData, Environment.NewLine,
+                MessageBox.Show(string.Format(Resources.SignUp_FailedToValidateData, Environment.NewLine,
                     ex.Message));
                 return;
             }
             try
             {
                 var user = new User(_firstName, _lastName, _email, _login, _password);
-                DBManager.AddUser(user);
+                DbManager.AddUser(user);
                 StationManager.CurrentUser = user;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format(Resources.SignUp_FailedToCreateUser, Environment.NewLine,
+                MessageBox.Show(string.Format(Resources.SignUp_FailedToCreateUser, Environment.NewLine,
                     ex.Message));
                 return;
             }
-            MessageBox.Show(String.Format(Resources.SignUp_UserSuccessfulyCreated, _login));
+            MessageBox.Show(string.Format(Resources.SignUp_UserSuccessfulyCreated, _login));
             NavigationManager.Instance.Navigate(ModesEnum.Main);
         }
         private bool SignUpCanExecute(object obj)
         {
-            return !String.IsNullOrEmpty(_login) &&
-                   !String.IsNullOrEmpty(_password) &&
-                   !String.IsNullOrEmpty(_firstName) &&
-                   !String.IsNullOrEmpty(_lastName) &&
-                   !String.IsNullOrEmpty(_email);
+            return !string.IsNullOrEmpty(_login) &&
+                   !string.IsNullOrEmpty(_password) &&
+                   !string.IsNullOrEmpty(_firstName) &&
+                   !string.IsNullOrEmpty(_lastName) &&
+                   !string.IsNullOrEmpty(_email);
         }
-        private void SignInExecute(object obj)
+        private static void SignInExecute(object obj)
         {
             NavigationManager.Instance.Navigate(ModesEnum.SignIn);
         }
-        private void CloseExecute(object obj)
+        private static void CloseExecute(object obj)
         {
             StationManager.CloseApp();
         }
