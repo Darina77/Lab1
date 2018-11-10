@@ -1,6 +1,6 @@
 ﻿using Lab1.Managers;
 using Lab1.Tools;
-using Lab1.ViewModels;
+using Lab1.ViewModels.Authentication;
 using System.Windows.Controls;
 
 namespace Lab1
@@ -12,7 +12,9 @@ namespace Lab1
             InitializeComponent();
             var navigationModel = new NavigationModel(this);
             NavigationManager.Instance.Initialize(navigationModel);
-            navigationModel.Navigate(ModesEnum.SignIn);
+            MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
+            DataContext = mainWindowViewModel;
+            mainWindowViewModel.StartApplication();
         }
 
         public ContentControl ContentControl => _contentControl;

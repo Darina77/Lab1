@@ -4,6 +4,7 @@ using Lab1.Tools;
 
 namespace Lab1.Models
 {
+    [Serializable]
     public class User
     {
         #region Const
@@ -71,7 +72,17 @@ namespace Lab1.Models
                return false;
             }
         }
-
+        public bool CheckPassword(User userCandidate)
+        {
+            try
+            {
+                return Password == userCandidate.Password;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         public override string ToString()
         {
             return $"{LastName} {FirstName}";

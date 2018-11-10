@@ -2,6 +2,7 @@
 
 namespace Lab1.Models
 {
+    [Serializable]
     public class Request
     {
         public enum Extension

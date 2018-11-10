@@ -77,7 +77,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Managers\DbManager.cs" />
+    <Compile Include="Managers\LoaderManager.cs" />
     <Compile Include="Managers\NavigationManager.cs" />
+    <Compile Include="Managers\SerializationManager.cs" />
     <Compile Include="Managers\StationManager.cs" />
     <Compile Include="Models\Request.cs" />
     <Compile Include="Models\User.cs" />
@@ -89,12 +91,16 @@
       <DependentUpon>LabelAndTextControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\Encrypting.cs" />
+    <Compile Include="Tools\FileFolderHelper.cs" />
     <Compile Include="Tools\IContentWindow.cs" />
+    <Compile Include="Tools\ILoaderOwner.cs" />
+    <Compile Include="Tools\Loger.cs" />
     <Compile Include="Tools\PasswordBoxAssistant.cs" />
     <Compile Include="Tools\NavigationModel.cs" />
     <Compile Include="Tools\RelayCommand.cs" />
     <Compile Include="ViewModels\App\HistoryViewModel.cs" />
     <Compile Include="ViewModels\App\MainViewViewModel.cs" />
+    <Compile Include="ViewModels\Authentication\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\Authentication\SingInViewModel.cs" />
     <Compile Include="ViewModels\Authentication\SingUpViewModel.cs" />
     <Compile Include="Views\App\History.xaml.cs">
