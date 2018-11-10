@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -107,7 +108,7 @@ namespace Lab1.ViewModels.App
         #endregion
 
         private async void OpenFolderExecute(object obj)
-        { 
+        {
             FilesCount = 0;
             FoldersCount = 0;
             VolumeRes = 0;
@@ -118,12 +119,14 @@ namespace Lab1.ViewModels.App
             VolumePath = folderBrowserDialog.SelectedPath;
 
             LoaderManager.Instance.ShowLoader();
+            Thread myThread = new Thread(CountInfo);
             var result = await Task.Run(() =>
             {
                 try
                 {
                     Logger.Log("Запит до " + VolumePath);
-                    CountInfo(VolumePath);
+                    myThread.Start(VolumePath);
+                    myThread.Join();
                     VolumeResString = $"{_volumeRes:0.00}";
                 }
                 catch (Exception)
@@ -156,10 +159,11 @@ namespace Lab1.ViewModels.App
             }
         }
 
-        private void CountInfo(string path)
+        private void CountInfo(object path)
         {
-            var files = Directory.GetFiles(path);
-            var directories = Directory.GetDirectories(path);
+            string spath = (string) path;
+            var files = Directory.GetFiles(spath);
+            var directories = Directory.GetDirectories(spath);
             FilesCount += files.Length;
             FoldersCount += directories.Length;
             double currentVolume = 0;
