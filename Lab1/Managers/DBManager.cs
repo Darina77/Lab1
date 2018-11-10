@@ -18,9 +18,9 @@ namespace Lab1.Managers
          
         }
 
-        internal static bool UserExists(string login)
+        internal static bool UserExists(string login,string email)
         {
-            return Users.Any(u => u.Login == login);
+            return Users.Any(u => u.Login == login || u.Email==email);
         }
 
         internal static User GetUserByLogin(string login)

@@ -15,7 +15,7 @@ namespace Lab1.Tools
             Path.Combine(ClientFolderPath, "Log");
 
         internal static readonly string LogFilepath = Path.Combine(LogFolderPath,
-            "App_" + DateTime.Now.ToString("YYYY_MM_DD") + ".txt");
+            "App_" + DateTime.Now.ToString("MM/dd/yyyy") + ".txt");
 
         internal static readonly string StorageFilePath =
             Path.Combine(ClientFolderPath, "Storage.walsim");

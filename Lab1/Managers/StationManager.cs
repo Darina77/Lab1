@@ -56,13 +56,7 @@ namespace Lab1.Managers
         internal static void CloseApp()
         {
             
-            FileFolderHelper.CheckAndCreateFile(FileFolderHelper.LastRequestFilePath);
-             if(CurrentUser.Requests!=null)
-             SerializationManager.Serialize(CurrentUser.Requests,FileFolderHelper.LastRequestFilePath);
-            
-            FileFolderHelper.CheckAndCreateFile(FileFolderHelper.LastUserFilePath);
-            SerializationManager.Serialize(CurrentUser, FileFolderHelper.LastUserFilePath);
-            DbManager.SaveChanges();
+           
             MessageBox.Show("Close");
             Logger.Log("Close");
             Environment.Exit(1);

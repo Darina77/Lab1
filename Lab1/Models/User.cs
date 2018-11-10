@@ -23,7 +23,7 @@ namespace Lab1.Models
 
         private string LastName { get; set; }
 
-        private string Email { get; set; }
+        public string Email { get; set; }
 
         public string Login { get; private set; }
 

@@ -227,6 +227,8 @@ namespace Lab1.ViewModels.App
         private static void LogOut(object obj)
         {
             Logger.Log("Log out");
+            FileInfo file =new FileInfo(FileFolderHelper.LastUserFilePath);
+            file.Delete();
             NavigationManager.Instance.Navigate(ModesEnum.SignIn);
         }
 

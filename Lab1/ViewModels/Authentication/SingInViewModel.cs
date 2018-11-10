@@ -127,6 +127,7 @@ namespace Lab1.ViewModels.Authentication
                     return false;
                 }
                 StationManager.CurrentUser = currentUser;
+                SerializationManager.Serialize(StationManager.CurrentUser, FileFolderHelper.LastUserFilePath);
                 return true;
             });
             LoaderManager.Instance.HideLoader();
