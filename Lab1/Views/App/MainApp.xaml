@@ -8,30 +8,31 @@
              x:ClassModifier="internal">
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition MinHeight="20"  MaxHeight="30"/>
-            <RowDefinition MinHeight="20"  MaxHeight="30"/>
-            <RowDefinition MinHeight="20"  MaxHeight="30"/>
-            <RowDefinition MinHeight="20"  MaxHeight="30"/>
-            <RowDefinition MinHeight="20"  MaxHeight="30"/>
-            <RowDefinition MinHeight="20"  MaxHeight="30"/>
-            <RowDefinition MinHeight="20"  MaxHeight="30"/>
-            <RowDefinition MinHeight="20"  MaxHeight="30"/>
-            <RowDefinition MinHeight="20"  MaxHeight="30"/>
+            <RowDefinition MinHeight="20"  MaxHeight="30" Height="31*"/>
+            <RowDefinition MinHeight="20"  MaxHeight="30" Height="30*"/>
+            <RowDefinition MinHeight="20"  MaxHeight="30" Height="30*"/>
+            <RowDefinition MinHeight="20"  MaxHeight="30" Height="26*"/>
+            <RowDefinition MinHeight="20"  MaxHeight="30" Height="30*"/>
+            <RowDefinition MinHeight="20"  MaxHeight="30" Height="30*"/>
+            <RowDefinition MinHeight="20"  MaxHeight="30" Height="30*"/>
+            <RowDefinition MinHeight="20"  MaxHeight="30" Height="23*"/>
+            <RowDefinition MinHeight="20"  MaxHeight="30" Height="30*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="2" Name="VolumePath"  Height="25" FontWeight="Bold" Content="{Binding VolumePath, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        <Label Grid.Row="3" Name="FilesCount" Content="Файлів:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30"/>
-        <Label Grid.Row="5" Name="FoldersCount" Content="Папок:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30"/>
-        <Label Grid.Row="7" Name="Volume" Content="Загальний об'єм:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30"/>
+        <Label Grid.Row="3" Name="VolumePath" FontWeight="Bold" Content="{Binding VolumePath, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="0,0,0,20"/>
+        <Label Grid.Row="3" Name="FilesCount" Content="Файлів:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="50" Grid.RowSpan="2"/>
+        <Label Grid.Row="5" Name="FoldersCount" Content="Папок:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="47" Margin="3,0,0,0"/>
+        <Label Grid.Row="7" Name="Volume" Content="Загальний об'єм:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="103" Grid.RowSpan="2"/>
         <Label Grid.Row="4" Name="FilesCountRes" Content="{Binding FilesCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="150"/>
         <Label Grid.Row="6" Name="FoldersCountRes" Content="{Binding FoldersCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="150"/>
         <Label Grid.Row="8" Name="VolumeResString" Content="{Binding VolumeResString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="150"/>
-        <Label Grid.Row="7" Name="CurrentExtension" Content="{Binding CurrentExtension, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="150" Margin="150,28,0,0" Grid.RowSpan="2"/>
+        <Label Grid.Row="8" Name="CurrentExtension" Content="{Binding CurrentExtension, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="150" Margin="150,2,0,-2"/>
 
-        <Button Grid.Row="0" Content="Запит" HorizontalAlignment="Center" FontSize="16px" VerticalAlignment="Top" Width="72" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="24" Command="{Binding OpenFolderCommand}"/>
-        <Button Grid.Row="1" Content="Історія" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="72" FontSize="16px" Height="29" Command="{Binding OpenHistoryCommand}"/>
+        <Button Grid.Row="0" Content="Запит" HorizontalAlignment="Center" FontSize="16px" VerticalAlignment="Top" Width="72" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="24" Command="{Binding OpenFolderCommand}" Margin="114,0"/>
+        <Button Grid.Row="1" Content="Історія" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="72" FontSize="16px" Height="29" Command="{Binding OpenHistoryCommand}" Margin="114,0"/>
+        <Button Grid.Row="2" Content="Log out" HorizontalAlignment="Center" FontSize="16px" VerticalAlignment="Top" Width="72" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="26" Command="{Binding LogOutCommand }" Margin="114,4,114,0"/>
     </Grid>
 </UserControl>

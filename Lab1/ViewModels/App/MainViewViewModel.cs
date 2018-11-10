@@ -25,6 +25,7 @@ namespace Lab1.ViewModels.App
         #region Commands
         private ICommand _openFolderCommand;
         private ICommand _openHistory;
+        private ICommand _logOut;
         #endregion
         #endregion
 
@@ -94,6 +95,7 @@ namespace Lab1.ViewModels.App
         public ICommand OpenFolderCommand => _openFolderCommand ?? (_openFolderCommand = new RelayCommand<object>(OpenFolderExecute));
 
         public ICommand OpenHistoryCommand => _openHistory ?? (_openHistory = new RelayCommand<object>(OpenHistoryExecute));
+        public ICommand LogOutCommand => _logOut ?? (_logOut = new RelayCommand<object>(LogOut));
 
         #endregion
         #endregion
@@ -116,12 +118,14 @@ namespace Lab1.ViewModels.App
             VolumePath = folderBrowserDialog.SelectedPath;
             try
             {
+                Logger.Log("Запит до "+ VolumePath);
                 CountInfo(VolumePath);
                 VolumeResString = $"{_volumeRes:0.00}";
                 Console.WriteLine(VolumeResString);
             }
             catch (Exception)
             {
+                Logger.Log(Resources.Read_foulders_error+" in file "+ VolumePath);
                 MessageBox.Show(string.Format(Resources.Read_foulders_error));
             }
             var req = new Request(VolumePath, FilesCount, FoldersCount, VolumeRes, CurrentExtension);
@@ -151,6 +155,7 @@ namespace Lab1.ViewModels.App
                     }
                     catch (System.UnauthorizedAccessException)
                     {
+                        Logger.Log(Resources.Dont_have_access+" to "+ directories[index]);
                         MessageBox.Show(string.Format(Resources.Dont_have_access, directories[index]));
                     }
                 });
@@ -191,7 +196,13 @@ namespace Lab1.ViewModels.App
 
         private static void OpenHistoryExecute(object obj)
         {
+            Logger.Log("Open History");
             NavigationManager.Instance.Navigate(ModesEnum.History);
+        }
+
+        private static void LogOut(object obj)
+        {
+            NavigationManager.Instance.Navigate(ModesEnum.SignIn);
         }
 
         #region EventsAndHandlers

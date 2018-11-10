@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Lab1.Models;
-using  Lab1.Tools;
+using Lab1.Tools;
 
 namespace Lab1.Managers
 {
-   internal class DbManager
+    internal class DbManager
     {
         private static readonly List<User> Users;
+
         static DbManager()
         {
             Users = SerializationManager.Deserialize<List<User>>(FileFolderHelper.StorageFilePath) ?? new List<User>();
@@ -28,10 +29,12 @@ namespace Lab1.Managers
             Users.Add(user);
             SaveChanges();
         }
+
         private static void SaveChanges()
         {
             SerializationManager.Serialize(Users, FileFolderHelper.StorageFilePath);
         }
+
         internal static User CheckCachedUser(User userCandidate)
         {
             var userInStorage = Users.FirstOrDefault(u => u.Guid == userCandidate.Guid);
@@ -39,14 +42,10 @@ namespace Lab1.Managers
                 return userInStorage;
             return null;
         }
+
         public static void UpdateUser(User currentUser)
         {
             SaveChanges();
-        }
-
-        internal static void InitUser()
-        {
-            Users.Add(new User("Name", "Last", "email@m.m", "login", "pass"));
         }
     }
 }

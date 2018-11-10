@@ -7,6 +7,7 @@ namespace Lab1.Models
     [Serializable]
     public class User
     {
+
         #region Const
         private const string Key = "sr4l8EwMgPqPhRTK";
         #endregion

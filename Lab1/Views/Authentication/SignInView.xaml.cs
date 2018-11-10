@@ -8,7 +8,7 @@ namespace Lab1.Views.Authentication
         public SignInView()
         {
             InitializeComponent();
-            var signInViewModel = new SingInViewModel();
+            var signInViewModel = new SignInViewModel();
             DataContext = signInViewModel;
         }
         #endregion      

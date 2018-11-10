@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Lab1.Tools;
@@ -25,8 +26,10 @@ namespace Lab1.Managers
         }
         internal static TObject Deserialize<TObject>(string filePath) where TObject : class
         {
+           
             try
             {
+                FileFolderHelper.CheckAndCreateFile(filePath);
                 var formatter = new BinaryFormatter();
                 using (var stream = new FileStream(filePath, FileMode.Open))
                 {
