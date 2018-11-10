@@ -130,6 +130,7 @@ namespace Lab1.ViewModels.App
             }
             var req = new Request(VolumePath, FilesCount, FoldersCount, VolumeRes, CurrentExtension);
             StationManager.CurrentUser.Requests.Add(req);
+            DbManager.SaveChanges();
         }
 
         private void CountInfo(string path)
@@ -202,6 +203,7 @@ namespace Lab1.ViewModels.App
 
         private static void LogOut(object obj)
         {
+            Logger.Log("Log out");
             NavigationManager.Instance.Navigate(ModesEnum.SignIn);
         }
 

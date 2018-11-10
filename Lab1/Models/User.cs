@@ -31,7 +31,7 @@ namespace Lab1.Models
 
         private DateTime LastLoginDate { get; set; }
 
-        public List<Request> Requests { get; private set; }
+        public List<Request> Requests { get; set; }
 
         #endregion
 

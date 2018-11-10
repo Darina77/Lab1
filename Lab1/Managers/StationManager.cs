@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using Lab1.Models;
-using  Lab1.Tools;
+using Lab1.Tools;
 namespace Lab1.Managers
 {
     public static class StationManager
@@ -12,14 +13,23 @@ namespace Lab1.Managers
         static StationManager()
         {
 
-            DeserializeLastUser();
+                DeserializeLastUser();
+            
         }
         private static void DeserializeLastUser()
         {
             User userCandidate;
             try
             {
-                userCandidate = SerializationManager.Deserialize<User>(Path.Combine(FileFolderHelper.LastUserFilePath));
+                FileInfo file = new FileInfo(FileFolderHelper.LastUserFilePath);
+                if (file.Exists)
+                {
+                    userCandidate = SerializationManager.Deserialize<User>(Path.Combine(FileFolderHelper.LastUserFilePath));
+
+                }
+                else
+                userCandidate = null;
+                //userCandidate.Requests=  SerializationManager.Deserialize<List<Request>>(Path.Combine(FileFolderHelper.LastRequestFilePath));
             }
             catch (Exception ex)
             {
@@ -31,15 +41,30 @@ namespace Lab1.Managers
                 Logger.Log("User was not deserialized");
                 return;
             }
+            if (userCandidate.Requests == null)
+            {
+                Logger.Log("User requests was not deserialized");
+                return;
+            }
             userCandidate = DbManager.CheckCachedUser(userCandidate);
             if (userCandidate == null)
                 Logger.Log("Failed to relogin last user");
             else
                 CurrentUser = userCandidate;
+            SerializationManager.Serialize(CurrentUser, FileFolderHelper.LastUserFilePath);
         }
         internal static void CloseApp()
         {
+            
+            FileFolderHelper.CheckAndCreateFile(FileFolderHelper.LastRequestFilePath);
+             if(CurrentUser.Requests!=null)
+             SerializationManager.Serialize(CurrentUser.Requests,FileFolderHelper.LastRequestFilePath);
+            
+            FileFolderHelper.CheckAndCreateFile(FileFolderHelper.LastUserFilePath);
+            SerializationManager.Serialize(CurrentUser, FileFolderHelper.LastUserFilePath);
+            DbManager.SaveChanges();
             MessageBox.Show("Close");
+            Logger.Log("Close");
             Environment.Exit(1);
         }
     }

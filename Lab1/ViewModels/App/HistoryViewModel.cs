@@ -56,7 +56,7 @@ namespace Lab1.ViewModels.App
         private static void CancelCommandExecute(object obj)
         {
 
-            SerializationManager.Serialize(StationManager.CurrentUser, FileFolderHelper.LastUserFilePath);
+          
             StationManager.CloseApp();
         }
 

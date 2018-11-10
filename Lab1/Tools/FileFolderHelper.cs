@@ -22,7 +22,8 @@ namespace Lab1.Tools
 
         internal static readonly string LastUserFilePath =
             Path.Combine(ClientFolderPath, "LastUser.walsim");
-
+        internal static readonly string LastRequestFilePath =
+            Path.Combine(ClientFolderPath, "LastRequests.walsim");
         internal static void CheckAndCreateFile(string filePath)
         {
             try

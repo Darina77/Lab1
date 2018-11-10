@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Lab1.Models;
 using Lab1.Tools;
@@ -11,7 +12,10 @@ namespace Lab1.Managers
 
         static DbManager()
         {
-            Users = SerializationManager.Deserialize<List<User>>(FileFolderHelper.StorageFilePath) ?? new List<User>();
+          
+                Users = SerializationManager.Deserialize<List<User>>(FileFolderHelper.StorageFilePath) ??
+                        new List<User>();
+         
         }
 
         internal static bool UserExists(string login)
@@ -27,10 +31,9 @@ namespace Lab1.Managers
         internal static void AddUser(User user)
         {
             Users.Add(user);
-            SaveChanges();
         }
 
-        private static void SaveChanges()
+        public static void SaveChanges()
         {
             SerializationManager.Serialize(Users, FileFolderHelper.StorageFilePath);
         }
