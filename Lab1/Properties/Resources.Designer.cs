@@ -88,6 +88,24 @@ namespace Lab1.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Faild to create request..
+        /// </summary>
+        internal static string Request_FaildToCeate {
+            get {
+                return ResourceManager.GetString("Request_FaildToCeate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Request was successful.
+        /// </summary>
+        internal static string Request_Suссess {
+            get {
+                return ResourceManager.GetString("Request_Suссess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Email address {0} is not valid!.
         /// </summary>
         internal static string SignIn_FailedToGetUser {

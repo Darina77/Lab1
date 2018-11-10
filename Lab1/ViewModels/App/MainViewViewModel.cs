@@ -106,7 +106,7 @@ namespace Lab1.ViewModels.App
         }
         #endregion
 
-        private void OpenFolderExecute(object obj)
+        private async void OpenFolderExecute(object obj)
         { 
             FilesCount = 0;
             FoldersCount = 0;
@@ -116,21 +116,44 @@ namespace Lab1.ViewModels.App
             var folderBrowserDialog = new FolderBrowserDialog();
             folderBrowserDialog.ShowDialog();
             VolumePath = folderBrowserDialog.SelectedPath;
-            try
+
+            LoaderManager.Instance.ShowLoader();
+            var result = await Task.Run(() =>
             {
-                Logger.Log("Запит до "+ VolumePath);
-                CountInfo(VolumePath);
-                VolumeResString = $"{_volumeRes:0.00}";
-                Console.WriteLine(VolumeResString);
-            }
-            catch (Exception)
+                try
+                {
+                    Logger.Log("Запит до " + VolumePath);
+                    CountInfo(VolumePath);
+                    VolumeResString = $"{_volumeRes:0.00}";
+                }
+                catch (Exception)
+                {
+                    Logger.Log(Resources.Read_foulders_error + " in file " + VolumePath);
+                    MessageBox.Show(string.Format(Resources.Read_foulders_error));
+                    return false;
+                }
+
+                try
+                {
+                    var req = new Request(VolumePath, FilesCount, FoldersCount, VolumeRes, CurrentExtension);
+                    StationManager.CurrentUser.Requests.Add(req);
+                    DbManager.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    Logger.Log(Resources.Request_FaildToCeate);
+                    MessageBox.Show(string.Format(Resources.Request_FaildToCeate));
+                    return false;
+                }
+
+                return true;
+            });
+            LoaderManager.Instance.HideLoader();
+            if (result)
             {
-                Logger.Log(Resources.Read_foulders_error+" in file "+ VolumePath);
-                MessageBox.Show(string.Format(Resources.Read_foulders_error));
+                Logger.Log(Resources.Request_Suссess);
+                MessageBox.Show(string.Format(Resources.Request_Suссess, Environment.NewLine));
             }
-            var req = new Request(VolumePath, FilesCount, FoldersCount, VolumeRes, CurrentExtension);
-            StationManager.CurrentUser.Requests.Add(req);
-            DbManager.SaveChanges();
         }
 
         private void CountInfo(string path)

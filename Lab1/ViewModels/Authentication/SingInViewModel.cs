@@ -125,7 +125,9 @@ namespace Lab1.ViewModels.Authentication
             });
             LoaderManager.Instance.HideLoader();
             if (result)
+            {
                 NavigationManager.Instance.Navigate(ModesEnum.Main);
+            }
         }
 
         private bool SignInCanExecute(object obj)

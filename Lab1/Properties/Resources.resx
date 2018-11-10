@@ -126,6 +126,12 @@
   <data name="Read_foulders_error" xml:space="preserve">
     <value>Something goes wrong.</value>
   </data>
+  <data name="Request_FaildToCeate" xml:space="preserve">
+    <value>Faild to create request.</value>
+  </data>
+  <data name="Request_Suссess" xml:space="preserve">
+    <value>Request was successful</value>
+  </data>
   <data name="SignIn_FailedToGetUser" xml:space="preserve">
     <value>Email address {0} is not valid!</value>
   </data>
