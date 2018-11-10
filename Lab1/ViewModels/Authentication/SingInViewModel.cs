@@ -97,13 +97,16 @@ namespace Lab1.ViewModels.Authentication
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(String.Format(Resources.SignIn_FailedToGetUser, Environment.NewLine,
+                    MessageBox.Show(string.Format(Resources.SignIn_FailedToGetUser, Environment.NewLine,
+                        ex.Message));
+                    Logger.Log(string.Format(Resources.SignIn_FailedToGetUser, Environment.NewLine,
                         ex.Message));
                     return false;
                 }
                 if (currentUser == null)
                 {
-                    MessageBox.Show(String.Format(Resources.SignIn_UserDoesntExist, _login));
+                    MessageBox.Show(string.Format(Resources.SignIn_UserDoesntExist, _login));
+                    Logger.Log(string.Format(Resources.SignIn_UserDoesntExist, _login));
                     return false;
                 }
                 try
@@ -111,12 +114,15 @@ namespace Lab1.ViewModels.Authentication
                     if (!currentUser.CheckPassword(_password))
                     {
                         MessageBox.Show(Resources.SignIn_WrongPassword);
+                        Logger.Log(Resources.SignIn_WrongPassword);
                         return false;
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(String.Format(Resources.SignIn_FailedToValidatePassword, Environment.NewLine,
+                    MessageBox.Show(string.Format(Resources.SignIn_FailedToValidatePassword, Environment.NewLine,
+                        ex.Message));
+                    Logger.Log(string.Format(Resources.SignIn_FailedToValidatePassword, Environment.NewLine,
                         ex.Message));
                     return false;
                 }
@@ -132,7 +138,7 @@ namespace Lab1.ViewModels.Authentication
 
         private bool SignInCanExecute(object obj)
         {
-            return !String.IsNullOrWhiteSpace(_login) && !String.IsNullOrWhiteSpace(_password);
+            return !string.IsNullOrWhiteSpace(_login) && !string.IsNullOrWhiteSpace(_password);
         }
 
         private void CloseExecute(object obj)
