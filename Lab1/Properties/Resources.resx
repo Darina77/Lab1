@@ -144,6 +144,9 @@
   <data name="SignIn_WrongPassword" xml:space="preserve">
     <value>Wrong password!</value>
   </data>
+  <data name="SignUp_EmailAlreadyExists" xml:space="preserve">
+    <value>User with email {0} already exists!</value>
+  </data>
   <data name="SignUp_EmailIsNotValid" xml:space="preserve">
     <value>Email address {0} is not valid!</value>
   </data>

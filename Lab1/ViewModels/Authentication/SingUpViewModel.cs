@@ -110,10 +110,16 @@ namespace Lab1.ViewModels.Authentication
                         return false;
                     }
 
-                    if (DbManager.UserExists(_login,_email))
+                    if (DbManager.UserLoginExists(_login))
                     {
                         MessageBox.Show(string.Format(Resources.SignUp_UserAlreadyExists, _login));
                         Logger.Log(string.Format(Resources.SignUp_UserAlreadyExists, _login));
+                        return false;
+                    }
+                    if (DbManager.UserEmailExists(_email))
+                    {
+                        MessageBox.Show(string.Format(Resources.SignUp_EmailAlreadyExists, _email));
+                        Logger.Log(string.Format(Resources.SignUp_EmailAlreadyExists, _email));
                         return false;
                     }
                 }

@@ -142,6 +142,15 @@ namespace Lab1.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на User with email {0} already exists!.
+        /// </summary>
+        internal static string SignUp_EmailAlreadyExists {
+            get {
+                return ResourceManager.GetString("SignUp_EmailAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Email address {0} is not valid!.
         /// </summary>
         internal static string SignUp_EmailIsNotValid {
