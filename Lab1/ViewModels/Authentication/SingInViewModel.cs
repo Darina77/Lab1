@@ -93,7 +93,7 @@ namespace Lab1.ViewModels.Authentication
                 User currentUser;
                 try
                 {
-                    currentUser = DbManager.GetUserByLogin(_login);
+                    currentUser = DbManager.GetUserByLogin(Login);
                 }
                 catch (Exception ex)
                 {
@@ -101,17 +101,18 @@ namespace Lab1.ViewModels.Authentication
                         ex.Message));
                     Logger.Log(string.Format(Resources.SignIn_FailedToGetUser, Environment.NewLine,
                         ex.Message));
+                    Logger.Log(ex.StackTrace);
                     return false;
                 }
                 if (currentUser == null)
                 {
-                    MessageBox.Show(string.Format(Resources.SignIn_UserDoesntExist, _login));
-                    Logger.Log(string.Format(Resources.SignIn_UserDoesntExist, _login));
+                    MessageBox.Show(string.Format(Resources.SignIn_UserDoesntExist, Login));
+                    Logger.Log(string.Format(Resources.SignIn_UserDoesntExist, Login));
                     return false;
                 }
                 try
                 {
-                    if (!currentUser.CheckPassword(_password))
+                    if (!currentUser.CheckPassword(Password))
                     {
                         MessageBox.Show(Resources.SignIn_WrongPassword);
                         Logger.Log(Resources.SignIn_WrongPassword);
@@ -124,6 +125,7 @@ namespace Lab1.ViewModels.Authentication
                         ex.Message));
                     Logger.Log(string.Format(Resources.SignIn_FailedToValidatePassword, Environment.NewLine,
                         ex.Message));
+                    Logger.Log(ex.StackTrace);
                     return false;
                 }
                 StationManager.CurrentUser = currentUser;
@@ -131,6 +133,8 @@ namespace Lab1.ViewModels.Authentication
                 return true;
             });
             LoaderManager.Instance.HideLoader();
+            Login = "";
+            Password = "";
             if (result)
             {
                 NavigationManager.Instance.Navigate(ModesEnum.Main);

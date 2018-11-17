@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Lab1.Tools;
+
 namespace Lab1.Managers
 {
     internal static class SerializationManager

@@ -55,8 +55,6 @@ namespace Lab1.ViewModels.App
 
         private static void CancelCommandExecute(object obj)
         {
-
-          
             StationManager.CloseApp();
         }
 

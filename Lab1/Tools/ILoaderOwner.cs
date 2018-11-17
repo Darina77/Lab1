@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows;
+
 namespace Lab1.Tools
 {
     internal interface ILoaderOwner : INotifyPropertyChanged

@@ -134,7 +134,7 @@ namespace Lab1.ViewModels.Authentication
 
                 try
                 {
-                    var user = new User(_firstName, _lastName, _email, _login, _password);
+                    var user = new User(FirstName, LastName, Email, Login, Password);
                     DbManager.AddUser(user);
                     StationManager.CurrentUser = user;
                 }
@@ -152,6 +152,11 @@ namespace Lab1.ViewModels.Authentication
                 return true;
             });
             LoaderManager.Instance.HideLoader();
+            Login = "";
+            Password = "";
+            FirstName = "";
+            LastName = "";
+            Email = "";
             if (result)
             {
                 NavigationManager.Instance.Navigate(ModesEnum.Main);

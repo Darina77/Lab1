@@ -1,9 +1,5 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Lab1.Adapter;
+﻿using Lab1.Adapter;
 using Lab1.Models;
-using Lab1.Tools;
 
 namespace Lab1.Managers
 {

@@ -34,7 +34,7 @@ namespace Lab1.ViewModels.App
         public string VolumePath
         {
             get => _volumePath;
-            set
+            private set
             {
                 _volumePath = value;
                 OnPropertyChanged();
@@ -44,7 +44,7 @@ namespace Lab1.ViewModels.App
         public int FilesCount
         {
             get => _filesCount;
-            set
+            private set
             {
                 _filesCount = value;
                 OnPropertyChanged();
@@ -54,7 +54,7 @@ namespace Lab1.ViewModels.App
         public int FoldersCount
         {
             get => _folderCount;
-            set
+            private set
             {
                 _folderCount = value; 
                 OnPropertyChanged();
@@ -64,7 +64,7 @@ namespace Lab1.ViewModels.App
         public string VolumeResString
         {
             get => _volumeResStr;
-            set
+            private set
             {
                 _volumeResStr = value;
                 OnPropertyChanged();
@@ -75,7 +75,7 @@ namespace Lab1.ViewModels.App
         public double VolumeRes
         {
             get => _volumeRes;
-            set
+            private set
             {
                 _volumeRes = value;
                 OnPropertyChanged();
@@ -85,7 +85,7 @@ namespace Lab1.ViewModels.App
         public Request.Extension CurrentExtension
         {
             get => _extension;
-            set
+            private set
             {
                 _extension = value;
                 OnPropertyChanged();
@@ -129,9 +129,10 @@ namespace Lab1.ViewModels.App
                     myThread.Join();
                     VolumeResString = $"{_volumeRes:0.00}";
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     Logger.Log(Resources.Read_foulders_error + " in file " + VolumePath);
+                    Logger.Log(e);
                     MessageBox.Show(string.Format(Resources.Read_foulders_error));
                     return false;
                 }
@@ -152,6 +153,7 @@ namespace Lab1.ViewModels.App
                 return true;
             });
             LoaderManager.Instance.HideLoader();
+           
             if (result)
             {
                 Logger.Log(Resources.Request_Suссess);
@@ -181,9 +183,10 @@ namespace Lab1.ViewModels.App
                     {
                         CountInfo(directories[index]);
                     }
-                    catch (System.UnauthorizedAccessException)
+                    catch (System.UnauthorizedAccessException e)
                     {
                         Logger.Log(Resources.Dont_have_access+" to "+ directories[index]);
+                        Logger.Log(e);
                         MessageBox.Show(string.Format(Resources.Dont_have_access, directories[index]));
                     }
                 });
@@ -228,12 +231,23 @@ namespace Lab1.ViewModels.App
             NavigationManager.Instance.Navigate(ModesEnum.History);
         }
 
-        private static void LogOut(object obj)
+        private void LogOut(object obj)
         {
             Logger.Log("Log out");
             FileInfo file =new FileInfo(FileFolderHelper.LastUserFilePath);
             file.Delete();
+            ClearProperties();
             NavigationManager.Instance.Navigate(ModesEnum.SignIn);
+        }
+
+        private void ClearProperties()
+        {
+            VolumePath = "";
+            FoldersCount = 0;
+            FilesCount = 0;
+            VolumeResString = "";
+            VolumeRes = 0;
+            CurrentExtension = Request.Extension.B;
         }
 
         #region EventsAndHandlers
