@@ -34,7 +34,7 @@ namespace Lab1.ViewModels.App
         public string VolumePath
         {
             get => _volumePath;
-            private set
+            set
             {
                 _volumePath = value;
                 OnPropertyChanged();
@@ -44,7 +44,7 @@ namespace Lab1.ViewModels.App
         public int FilesCount
         {
             get => _filesCount;
-            private set
+            set
             {
                 _filesCount = value;
                 OnPropertyChanged();
@@ -54,7 +54,7 @@ namespace Lab1.ViewModels.App
         public int FoldersCount
         {
             get => _folderCount;
-            private set
+            set
             {
                 _folderCount = value; 
                 OnPropertyChanged();
@@ -64,7 +64,7 @@ namespace Lab1.ViewModels.App
         public string VolumeResString
         {
             get => _volumeResStr;
-            private set
+            set
             {
                 _volumeResStr = value;
                 OnPropertyChanged();
@@ -75,7 +75,7 @@ namespace Lab1.ViewModels.App
         public double VolumeRes
         {
             get => _volumeRes;
-            private set
+            set
             {
                 _volumeRes = value;
                 OnPropertyChanged();
@@ -85,7 +85,7 @@ namespace Lab1.ViewModels.App
         public Request.Extension CurrentExtension
         {
             get => _extension;
-            private set
+            set
             {
                 _extension = value;
                 OnPropertyChanged();
@@ -124,14 +124,14 @@ namespace Lab1.ViewModels.App
             {
                 try
                 {
-                    Logger.Log("Запит до " + VolumePath);
-                    myThread.Start(VolumePath);
+                    Logger.Log("Запит до " + _volumePath);
+                    myThread.Start(_volumePath);
                     myThread.Join();
                     VolumeResString = $"{_volumeRes:0.00}";
                 }
                 catch (Exception e)
                 {
-                    Logger.Log(Resources.Read_foulders_error + " in file " + VolumePath);
+                    Logger.Log(Resources.Read_foulders_error + " in file " + _volumePath);
                     Logger.Log(e);
                     MessageBox.Show(string.Format(Resources.Read_foulders_error));
                     return false;
@@ -139,7 +139,7 @@ namespace Lab1.ViewModels.App
 
                 try
                 {
-                    var req = new Request(VolumePath, FilesCount, FoldersCount, VolumeRes, CurrentExtension, StationManager.CurrentUser);
+                    var req = new Request(_volumePath, _filesCount, _folderCount, _volumeRes, _extension, StationManager.CurrentUser);
                     DbManager.AddRequest(req);
                 }
                 catch (Exception e)
