@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.ModelConfiguration;
 using Lab1.Tools;
 
 namespace Lab1.Models
@@ -13,25 +15,65 @@ namespace Lab1.Models
         #endregion
 
         #region Fields
-
+        private Guid _guid;
+        private string _firstName;
+        private string _lastName;
+        private string _email;
+        private string _login;
+        private string _password;
+        private DateTime _lastLoginDate;
+        private List<Request> _requests;
         #endregion
 
         #region Properties
-        public Guid Guid { get; private set; }
+        [Key]
+        public Guid Guid
+        {
+            get => _guid;
+            private set => _guid = value;
+        }
 
-        private string FirstName { get; set; }
+        private string FirstName
+        {
+            get => _firstName;
+            set => _firstName = value;
+        }
 
-        private string LastName { get; set; }
+        private string LastName
+        {
+            get => _lastName;
+            set => _lastName = value;
+        }
 
-        public string Email { get; set; }
+        public string Email
+        {
+            get => _email;
+            set => _email = value;
+        }
 
-        public string Login { get; private set; }
+        public string Login
+        {
+            get => _login;
+            private set => _login = value;
+        }
 
-        private string Password { get; set; }
+        private string Password
+        {
+            get => _password;
+            set => _password = value;
+        }
 
-        private DateTime LastLoginDate { get; set; }
+        private DateTime LastLoginDate
+        {
+            get => _lastLoginDate;
+            set => _lastLoginDate = value;
+        }
 
-        public List<Request> Requests { get; set; }
+        public List<Request> Requests
+        {
+            get => _requests;
+            set => _requests = value;
+        }
 
         #endregion
 
@@ -45,7 +87,7 @@ namespace Lab1.Models
             Email = email;
             Login = login;
             LastLoginDate = DateTime.Now;
-
+            Requests = new List<Request>();
             SetPassword(password);
         }
 
@@ -88,5 +130,45 @@ namespace Lab1.Models
         {
             return $"{LastName} {FirstName}";
         }
+
+        #region EntityConfiguration
+
+        public class UserEntityConfiguration : EntityTypeConfiguration<User>
+        {
+            public UserEntityConfiguration()
+            {
+                ToTable("Users");
+                HasKey(s => s.Guid);
+
+                Property(p => p.Guid)
+                    .HasColumnName("Guid")
+                    .IsRequired();
+                Property(p => p.FirstName)
+                    .HasColumnName("FirstName")
+                    .IsRequired();
+                Property(p => p.LastName)
+                    .HasColumnName("LastName")
+                    .IsRequired();
+                Property(p => p.Email)
+                    .HasColumnName("Email")
+                    .IsOptional();
+                Property(p => p.Login)
+                    .HasColumnName("Login")
+                    .IsRequired();
+                Property(p => p.Password)
+                    .HasColumnName("Password")
+                    .IsRequired();
+                Property(p => p.LastLoginDate)
+                    .HasColumnName("LastLoginDate")
+                    .IsRequired();
+
+                HasMany(s => s.Requests)
+                    .WithRequired(r => r.User)
+                    .HasForeignKey(r => r.UserId)
+                    .WillCascadeOnDelete(true);
+            }
+        }
+        #endregion
     }
 }
+

@@ -110,7 +110,7 @@ namespace Lab1.ViewModels.Authentication
                         return false;
                     }
 
-                    if (DbManager.UserLoginExists(_login))
+                    if (DbManager.UserExists(_login))
                     {
                         MessageBox.Show(string.Format(Resources.SignUp_UserAlreadyExists, _login));
                         Logger.Log(string.Format(Resources.SignUp_UserAlreadyExists, _login));

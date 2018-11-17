@@ -138,13 +138,13 @@ namespace Lab1.ViewModels.App
 
                 try
                 {
-                    var req = new Request(VolumePath, FilesCount, FoldersCount, VolumeRes, CurrentExtension);
-                    StationManager.CurrentUser.Requests.Add(req);
-                    DbManager.SaveChanges();
+                    var req = new Request(VolumePath, FilesCount, FoldersCount, VolumeRes, CurrentExtension, StationManager.CurrentUser);
+                    DbManager.AddRequest(req);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     Logger.Log(Resources.Request_FaildToCeate);
+                    Logger.Log(e);
                     MessageBox.Show(string.Format(Resources.Request_FaildToCeate));
                     return false;
                 }
