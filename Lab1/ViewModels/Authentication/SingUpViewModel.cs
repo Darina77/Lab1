@@ -127,8 +127,7 @@ namespace Lab1.ViewModels.Authentication
                 {
                     MessageBox.Show(string.Format(Resources.SignUp_FailedToValidateData, Environment.NewLine,
                         ex.Message));
-                    Logger.Log(string.Format(Resources.SignUp_FailedToValidateData, Environment.NewLine,
-                        ex.Message));
+                    Logger.Log(ex);
                     return false;
                 }
 
@@ -142,8 +141,7 @@ namespace Lab1.ViewModels.Authentication
                 {
                     MessageBox.Show(string.Format(Resources.SignUp_FailedToCreateUser, Environment.NewLine,
                         ex.Message));
-                    Logger.Log(string.Format(Resources.SignUp_FailedToCreateUser, Environment.NewLine,
-                        ex.Message));
+                    Logger.Log(ex);
                     return false;
                 }
 

@@ -99,9 +99,7 @@ namespace Lab1.ViewModels.Authentication
                 {
                     MessageBox.Show(string.Format(Resources.SignIn_FailedToGetUser, Environment.NewLine,
                         ex.Message));
-                    Logger.Log(string.Format(Resources.SignIn_FailedToGetUser, Environment.NewLine,
-                        ex.Message));
-                    Logger.Log(ex.StackTrace);
+                    Logger.Log(ex);
                     return false;
                 }
                 if (currentUser == null)
@@ -123,9 +121,7 @@ namespace Lab1.ViewModels.Authentication
                 {
                     MessageBox.Show(string.Format(Resources.SignIn_FailedToValidatePassword, Environment.NewLine,
                         ex.Message));
-                    Logger.Log(string.Format(Resources.SignIn_FailedToValidatePassword, Environment.NewLine,
-                        ex.Message));
-                    Logger.Log(ex.StackTrace);
+                    Logger.Log(ex);
                     return false;
                 }
                 StationManager.CurrentUser = currentUser;

@@ -97,6 +97,7 @@
       <DependentUpon>201811171844268_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Count.cs" />
     <Compile Include="Models\Request.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\Annotations.cs" />
