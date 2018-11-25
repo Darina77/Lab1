@@ -52,15 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CountServiceWrapper.cs" />
-    <Compile Include="ICountService.cs" />
+    <Compile Include="ICountContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DBModels\DBModels.csproj">

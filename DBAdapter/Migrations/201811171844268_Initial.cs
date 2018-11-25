@@ -1,8 +1,7 @@
-namespace Lab1.Migrations
+using System.Data.Entity.Migrations;
+
+namespace Lab1.DBAdapter.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class Initial : DbMigration
     {
         public override void Up()

@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity;
-using Lab1.Models;
+using Lab1.DBModels;
 
 namespace Lab1.DBAdapter
 {

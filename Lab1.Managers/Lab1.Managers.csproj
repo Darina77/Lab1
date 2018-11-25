@@ -56,10 +56,6 @@
     <Compile Include="StationManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\DBAdapter\DBAdapter.csproj">
       <Project>{a2a1d3b1-0352-45f5-b807-763072603c28}</Project>
       <Name>DBAdapter</Name>

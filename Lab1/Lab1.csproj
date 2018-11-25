@@ -85,21 +85,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Adapter\DirFileCounterContext.cs" />
-    <Compile Include="Adapter\EntityWrapper.cs" />
-    <Compile Include="Managers\DbManager.cs" />
     <Compile Include="Managers\LoaderManager.cs" />
     <Compile Include="Managers\NavigationManager.cs" />
-    <Compile Include="Managers\SerializationManager.cs" />
-    <Compile Include="Managers\StationManager.cs" />
-    <Compile Include="Migrations\201811171844268_Initial.cs" />
-    <Compile Include="Migrations\201811171844268_Initial.Designer.cs">
-      <DependentUpon>201811171844268_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Count.cs" />
-    <Compile Include="Models\Request.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Tools\Controls\LabelAndPasswordControl.xaml.cs">
       <DependentUpon>LabelAndPasswordControl.xaml</DependentUpon>
@@ -107,11 +95,8 @@
     <Compile Include="Tools\Controls\LabelAndTextControl.xaml.cs">
       <DependentUpon>LabelAndTextControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tools\Encrypting.cs" />
-    <Compile Include="Tools\FileFolderHelper.cs" />
     <Compile Include="Tools\IContentWindow.cs" />
     <Compile Include="Tools\ILoaderOwner.cs" />
-    <Compile Include="Tools\Loger.cs" />
     <Compile Include="Tools\PasswordBoxAssistant.cs" />
     <Compile Include="Tools\NavigationModel.cs" />
     <Compile Include="Tools\RelayCommand.cs" />
@@ -183,9 +168,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201811171844268_Initial.resx">
-      <DependentUpon>201811171844268_Initial.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -199,7 +181,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DBAdapter\DBAdapter.csproj">
+      <Project>{A2A1D3B1-0352-45F5-B807-763072603C28}</Project>
+      <Name>DBAdapter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBModels\DBModels.csproj">
+      <Project>{247ACCAB-5DA1-4A3A-8B7A-0399DE79AE37}</Project>
+      <Name>DBModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\Lab1.Tools.csproj">
+      <Project>{98287B56-2A55-4668-87B6-BA18CE1936E3}</Project>
+      <Name>Lab1.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>

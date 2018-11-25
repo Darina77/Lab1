@@ -1,15 +1,15 @@
-namespace Lab1.Migrations
+using System.Data.Entity.Migrations;
+
+namespace Lab1.DBAdapter.Migrations
 {
-    using System.Data.Entity.Migrations;
-   
-    internal sealed class Configuration : DbMigrationsConfiguration<Lab1.DBAdapter.DirFileCounterContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DirFileCounterContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Lab1.Adapter.DirFileCounterContext context)
+        protected override void Seed(DirFileCounterContext context)
         {
             //  This method will be called after migrating to the latest version.
 
