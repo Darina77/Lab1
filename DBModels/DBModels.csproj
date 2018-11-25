@@ -7,7 +7,7 @@
     <ProjectGuid>{247ACCAB-5DA1-4A3A-8B7A-0399DE79AE37}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Lab1.DBModels</RootNamespace>
-    <AssemblyName>DBModels</AssemblyName>
+    <AssemblyName>Lab1.DBModels</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -58,6 +58,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tools\Lab1.Tools.csproj">
+      <Project>{98287b56-2a55-4668-87b6-ba18ce1936e3}</Project>
+      <Name>Lab1.Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,16 +4,16 @@ using System.ServiceProcess;
 using Lab1.Tools;
 
 namespace Lab1.Services{
-    public class WalletSimulatorWindowsService : ServiceBase
+    public class CountSimulatorWindowsService : ServiceBase
     {
-        internal const string CurrentServiceName = "WalletSimulatorService1";
-        internal const string CurrentServiceDisplayName = "Wallet Simulator Service1";
-        internal const string CurrentServiceSource = "WalletSimulatorServiceSource1";
-        internal const string CurrentServiceLogName = "WalletSimulatorServiceLogName1";
-        internal const string CurrentServiceDescription = "Wallet Simulator for learning purposes1.";
+        internal const string CurrentServiceName = "CountSimulatorService1";
+        internal const string CurrentServiceDisplayName = "Count Simulator Service1";
+        internal const string CurrentServiceSource = "CountSimulatorServiceSource1";
+        internal const string CurrentServiceLogName = "CountSimulatorServiceLogName1";
+        internal const string CurrentServiceDescription = "Count Simulator for learning purposes1.";
         private ServiceHost _serviceHost = null;
 
-        public WalletSimulatorWindowsService()
+        public CountSimulatorWindowsService()
         {
             ServiceName = CurrentServiceName;
             try
@@ -47,7 +47,7 @@ namespace Lab1.Services{
             }
             try
             {
-                _serviceHost = new ServiceHost(typeof(WalletSimulatorService));
+                _serviceHost = new ServiceHost(typeof(CountSimulatorService));
                 _serviceHost.Open();
             }
             catch (Exception ex)

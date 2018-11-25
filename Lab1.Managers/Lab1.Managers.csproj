@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8F366F6F-B0E5-4ED3-BAB1-B5666D7A8B8C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Lab1.Mahagers</RootNamespace>
+    <RootNamespace>Lab1.Managers</RootNamespace>
     <AssemblyName>Lab1.Managers</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -58,6 +58,20 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBAdapter\DBAdapter.csproj">
+      <Project>{a2a1d3b1-0352-45f5-b807-763072603c28}</Project>
+      <Name>DBAdapter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBModels\DBModels.csproj">
+      <Project>{247accab-5da1-4a3a-8b7a-0399de79ae37}</Project>
+      <Name>DBModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\Lab1.Tools.csproj">
+      <Project>{98287b56-2a55-4668-87b6-ba18ce1936e3}</Project>
+      <Name>Lab1.Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

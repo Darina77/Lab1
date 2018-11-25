@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using Lab1.Adapter;
+using Lab1.DBAdapter;
 using Lab1.DBModels;
 using Lab1.CountServiceInterface;
 

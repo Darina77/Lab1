@@ -1,5 +1,5 @@
 ﻿using Lab1.DBModels;
-
+using Lab1.DBAdapter;
 namespace Lab1.Managers
 {
     internal class DbManager

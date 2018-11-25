@@ -70,5 +70,23 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CountServiceInterface\CountServiceInterface.csproj">
+      <Project>{3b75d8c7-bc1c-42cd-9570-e14d61215fec}</Project>
+      <Name>CountServiceInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBAdapter\DBAdapter.csproj">
+      <Project>{a2a1d3b1-0352-45f5-b807-763072603c28}</Project>
+      <Name>DBAdapter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBModels\DBModels.csproj">
+      <Project>{247accab-5da1-4a3a-8b7a-0399de79ae37}</Project>
+      <Name>DBModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\Lab1.Tools.csproj">
+      <Project>{98287b56-2a55-4668-87b6-ba18ce1936e3}</Project>
+      <Name>Lab1.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
