@@ -102,4 +102,3 @@ namespace Lab1.Tools
         }
     }
 }
-

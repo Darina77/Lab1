@@ -17,7 +17,6 @@ namespace Lab1.Models
         public double VolumeRes { get; private set; }
         public Request.Extension CurrentExtension { get; private set; }
         private Thread myThread;
-        private bool finish;
 
         public Count(string VolumePath)
         {
@@ -27,7 +26,6 @@ namespace Lab1.Models
             this.CurrentExtension = Request.Extension.B;
             myThread = new Thread(CountInfo);
             myThread.Start(VolumePath);
-            finish = true;
         }
 
         public bool isEnd()

@@ -58,8 +58,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Tools\Lab1.Tools.csproj">
-      <Project>{98287b56-2a55-4668-87b6-ba18ce1936e3}</Project>
+    <ProjectReference Include="..\Lab1.Tools\Lab1.Tools.csproj">
+      <Project>{C0745BFD-F8A2-45A6-A99C-EECD9E833051}</Project>
       <Name>Lab1.Tools</Name>
     </ProjectReference>
   </ItemGroup>
