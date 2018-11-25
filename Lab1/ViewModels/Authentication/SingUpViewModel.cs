@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Lab1.DBModels;
 using Lab1.Managers;
 using Lab1.Models;
 using Lab1.Properties;

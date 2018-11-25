@@ -190,6 +190,10 @@
       <Project>{247ACCAB-5DA1-4A3A-8B7A-0399DE79AE37}</Project>
       <Name>DBModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Lab1.Managers\Lab1.Managers.csproj">
+      <Project>{8F366F6F-B0E5-4ED3-BAB1-B5666D7A8B8C}</Project>
+      <Name>Lab1.Managers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tools\Lab1.Tools.csproj">
       <Project>{98287B56-2A55-4668-87B6-BA18CE1936E3}</Project>
       <Name>Lab1.Tools</Name>

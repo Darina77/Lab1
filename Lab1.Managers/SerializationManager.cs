@@ -5,9 +5,9 @@ using Lab1.Tools;
 
 namespace Lab1.Managers
 {
-    internal static class SerializationManager
+    public static class SerializationManager
     {
-        internal static void Serialize<TObject>(TObject obj, string filePath)
+        public static void Serialize<TObject>(TObject obj, string filePath)
         {
             try
             {

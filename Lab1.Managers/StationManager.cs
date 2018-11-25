@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
+using System.Windows.Forms;
 using Lab1.DBModels;
 using Lab1.Tools;
 namespace Lab1.Managers
@@ -52,10 +53,9 @@ namespace Lab1.Managers
                 CurrentUser = userCandidate;
             SerializationManager.Serialize(CurrentUser, FileFolderHelper.LastUserFilePath);
         }
-        internal static void CloseApp()
+
+        public static void CloseApp()
         {
-            
-           
             MessageBox.Show("Close");
             Logger.Log("Close");
             Environment.Exit(1);

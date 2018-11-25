@@ -2,7 +2,7 @@
 using Lab1.DBAdapter;
 namespace Lab1.Managers
 {
-    internal class DbManager
+    public class DbManager
     {
 
         public static bool UserExists(string login)
