@@ -1,5 +1,5 @@
-﻿using Lab1.DBModels;
-using Lab1.DBAdapter;
+﻿using CountServiceInterface;
+using Lab1.DBModels;
 namespace Lab1.Managers
 {
     public class DbManager
@@ -7,27 +7,27 @@ namespace Lab1.Managers
 
         public static bool UserExists(string login)
         {
-            return EntityWrapper.UserExists(login);
+            return CountServiceWrapper.UserExists(login);
         }
 
         public static bool UserEmailExists(string email)
         {
-            return EntityWrapper.UserEmailExists(email);
+            return CountServiceWrapper.UserEmailExists(email);
         }
 
         public static User GetUserByLogin(string login)
         {
-            return EntityWrapper.GetUserByLogin(login);
+            return CountServiceWrapper.GetUserByLogin(login);
         }
 
         public static void AddUser(User user)
         {
-            EntityWrapper.AddUser(user);
+            CountServiceWrapper.AddUser(user);
         }
 
         internal static User CheckCachedUser(User userCandidate)
         {
-            var userInStorage = EntityWrapper.GetUserByGuid(userCandidate.Guid);
+            var userInStorage = CountServiceWrapper.GetUserByGuid(userCandidate.Guid);
             if (userInStorage != null && userInStorage.CheckPassword(userCandidate))
                 return userInStorage;
             return null;
@@ -35,7 +35,7 @@ namespace Lab1.Managers
 
         public static void AddRequest(Request request)
         {
-            EntityWrapper.AddRequest(request);
+            CountServiceWrapper.AddRequest(request);
         }
     }
 }

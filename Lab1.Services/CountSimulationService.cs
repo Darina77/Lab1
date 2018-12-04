@@ -1,7 +1,8 @@
 ﻿using System;
+using CountServiceInterface;
 using Lab1.DBAdapter;
 using Lab1.DBModels;
-using Lab1.CountServiceInterface;
+
 
 namespace Lab1.Services
 {

@@ -2,7 +2,7 @@
 using System.ServiceModel;
 using Lab1.DBModels;
 
-namespace Lab1.CountServiceInterface
+namespace CountServiceInterface
 {
     [ServiceContract]
     public interface ICountContract

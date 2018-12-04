@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using Lab1.DBAdapter.Migrations;
 using Lab1.DBModels;
 
 namespace Lab1.DBAdapter
@@ -9,7 +10,9 @@ namespace Lab1.DBAdapter
         public DbSet<Request> Requests { get; set;}
         public DirFileCounterContext()
             : base("DbConnection")
-        { }
+        { 
+			Database.SetInitializer(new MigrateDatabaseToLatestVersion<DirFileCounterContext, Configuration>(true));
+		}
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

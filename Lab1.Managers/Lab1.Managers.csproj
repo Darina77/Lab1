@@ -22,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -55,6 +54,10 @@
     <Compile Include="StationManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CountServiceInterface\CountServiceInterface.csproj">
+      <Project>{E80A28CD-4A0B-419C-AADE-44DA450323A4}</Project>
+      <Name>CountServiceInterface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DBAdapter\DBAdapter.csproj">
       <Project>{a2a1d3b1-0352-45f5-b807-763072603c28}</Project>
       <Name>DBAdapter</Name>

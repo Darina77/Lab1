@@ -12,7 +12,7 @@ namespace Lab1.Services{
         internal const string CurrentServiceLogName = "CountSimulatorServiceLogName1";
         internal const string CurrentServiceDescription = "Count Simulator for learning purposes1.";
         private ServiceHost _serviceHost = null;
-
+        
         public CountSimulatorWindowsService()
         {
             ServiceName = CurrentServiceName;
