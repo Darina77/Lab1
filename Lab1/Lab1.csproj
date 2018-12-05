@@ -71,7 +71,6 @@
     </ApplicationDefinition>
     <Compile Include="Managers\LoaderManager.cs" />
     <Compile Include="Managers\NavigationManager.cs" />
-    <Compile Include="Models\Count.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Tools\Controls\LabelAndPasswordControl.xaml.cs">
       <DependentUpon>LabelAndPasswordControl.xaml</DependentUpon>

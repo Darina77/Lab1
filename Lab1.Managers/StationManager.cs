@@ -11,10 +11,9 @@ namespace Lab1.Managers
 
         static StationManager()
         {
-
-                DeserializeLastUser();
-            
+                DeserializeLastUser();     
         }
+
         private static void DeserializeLastUser()
         {
             User userCandidate;
@@ -28,7 +27,6 @@ namespace Lab1.Managers
                 }
                 else
                 userCandidate = null;
-                //userCandidate.Requests=  SerializationManager.Deserialize<List<Request>>(Path.Combine(FileFolderHelper.LastRequestFilePath));
             }
             catch (Exception ex)
             {
