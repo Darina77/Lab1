@@ -122,13 +122,13 @@ namespace Lab1.ViewModels.App
             {
                 try
                 {
-                    Logger.Log("Запит до " + _volumePath);
-                    CountInfo(_volumePath);                          
+                    Logger.Log("Запит до " + VolumePath);
+                    CountInfo(VolumePath);                          
                     VolumeResString = $"{_volumeRes:0.00}";
                 }
                 catch (Exception e)
                 {
-                    Logger.Log(Resources.Read_foulders_error + " in file " + _volumePath);
+                    Logger.Log(Resources.Read_foulders_error + " in file " + VolumePath);
                     Logger.Log(e);
                     MessageBox.Show(string.Format(Resources.Read_foulders_error));
                     return false;
@@ -158,11 +158,10 @@ namespace Lab1.ViewModels.App
             }
         }
 
-        private void CountInfo(object path)
+        private void CountInfo(string path)
         {
-            string spath = (string)path;
-            var files = Directory.GetFiles(spath);
-            var directories = Directory.GetDirectories(spath);
+            var files = Directory.GetFiles(path);
+            var directories = Directory.GetDirectories(path);
             FilesCount += files.Length;
             FoldersCount += directories.Length;
             double currentVolume = 0;
@@ -180,7 +179,7 @@ namespace Lab1.ViewModels.App
                     {
                         CountInfo(directories[index]);
                     }
-                    catch (System.UnauthorizedAccessException e)
+                    catch (UnauthorizedAccessException e)
                     {
                         Logger.Log(Resources.Dont_have_access + " to " + directories[index]);
                         Logger.Log(e);
